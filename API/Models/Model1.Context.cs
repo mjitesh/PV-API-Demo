@@ -13,10 +13,10 @@ namespace API.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class demodbEntities : DbContext
+    public partial class demodbEntities1 : DbContext
     {
-        public demodbEntities()
-            : base("name=demodbEntities")
+        public demodbEntities1()
+            : base("name=demodbEntities1")
         {
         }
     

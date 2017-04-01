@@ -16,7 +16,7 @@ namespace API.Controllers
         //[Authorize]
         public List<ProductDTO> GetProducts()
         {
-            using (var ctx = new Models.demodbEntities())
+            using (var ctx = new Models.demodbEntities1())
             {
                 var _list = ctx.Products.Select(x => new ProductDTO() { Id = x.Id, Name = x.Name, Cost = x.Cost,IsInOffer = x.IsInOffer,CategoryName = x.ProductCategory.Name,Stock = x.Stock});
                 return _list.ToList();
@@ -28,7 +28,7 @@ namespace API.Controllers
         public ProductDTO AddProduct(ProductDTO product)
         {
             ProductDTO _productDto;
-            using (var ctx = new Models.demodbEntities())
+            using (var ctx = new Models.demodbEntities1())
             {
                 if (product.Id == 0)
                 {
@@ -54,8 +54,6 @@ namespace API.Controllers
                     selpro.CategoryId = product.CategoryId;
                     ctx.SaveChanges();
                 }
-
-
             }
             return null;
 
@@ -65,7 +63,7 @@ namespace API.Controllers
         [HttpGet]
         public List<CategoryList> GetCategoriesList()
         {
-            using (var ctx = new Models.demodbEntities())
+            using (var ctx = new Models.demodbEntities1())
             {
                 var res = ctx.ProductCategories.Select(x => new CategoryList() { Text = x.Name, Value = x.Id.ToString() });
                 return res.ToList();
@@ -77,7 +75,7 @@ namespace API.Controllers
         [HttpGet]
         public bool DeleteProuct(int productid)
         {
-            using (var ctx = new Models.demodbEntities())
+            using (var ctx = new Models.demodbEntities1())
             {
                 var prod = ctx.Products.Where(x => x.Id == productid).FirstOrDefault();
                 ctx.Products.Remove(prod);
