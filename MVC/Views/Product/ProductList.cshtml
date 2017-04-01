@@ -1,0 +1,55 @@
+﻿@model IEnumerable<MVC.Models.ProductModel>
+
+<p>
+    @Html.ActionLink("Create New", "AddNewProduct")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsInOffer)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+        <td>
+            @Html.CheckBoxFor(m=>item.IsInOffer,new {disabled="disabled"})
+          
+        </td>
+        <td>
+         
+            @Html.ActionLink("Edit", "Edit", new {id = item.Id}) |
+          
+            @Html.ActionLink("Delete", "DeleteProduct", new { productid = item.Id })
+        </td>
+    </tr>
+}
+
+</table>
